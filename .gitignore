@@ -57,3 +57,10 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+dist/README.TXT
+build.xml
+build/built-jar.properties
+manifest.mf
+nbproject/private/config.properties
+nbproject/private/private.properties
+nbproject/private/private.xml
