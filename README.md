@@ -1,7 +1,7 @@
 # AME_Editor
 Adobe Media Encoder Batch Editor
 
-This is a small tool to help with editing the batch.xml list of Adobe Media Encoder CS5.
+This is a small tool to help with editing the batch.xml list of Adobe Media Encoder CS5. It's written in Java, so all you need is the Java Runtime Environment version 7 or higher (which is probably already installed on your system) and it should work on any platform.
 
 This is helpful for a couple reasons:
 - When adding multiple sequences, AME doesn't keep them in any sort of order.
