@@ -15,17 +15,17 @@ and then editing AME's batch.xml for you.
 
 Basic How-To:
 1.  Hit "Detect" to automatically enter the path to your AME batch.xml file.
-1a. This probably only works on Windows - if it doesn't work, just hit 
+    This probably only works on Windows - if it doesn't work, just hit 
     "Detect" and modify to the actual path, it's probably very similar.
 2.  Enter your list of sequences on the left - this list should match the sequence
     names that you have added to Adobe Media Encoder and want to be changed.
-2a. Use the "Nested" button if your sequences are all named "Nested Sequence 01",
+    Use the "Nested" button if your sequences are all named "Nested Sequence 01",
     "Nested Sequence 02", etc. Enter the range of numbers and hit "Nested" to
     automatically populate the left side with nested sequence names.
 3.  Enter your list of file names on the right - this list should be the same
     size as the one on the left and should be the names that you want your
     sequences exported to.
-3a. Use the "Browse" button if you've taken bitmap screenshots of each sequence
+    Use the "Browse" button if you've taken bitmap screenshots of each sequence
     and you want the exported sequence to have the same name as the screenshot.
     Find the folder that you placed your screenshots in - the right side will
     automatically be populated with the list of bmp files in that directory.
