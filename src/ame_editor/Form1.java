@@ -246,6 +246,16 @@ public class Form1 extends javax.swing.JFrame {
     }//GEN-LAST:event_filesActionPerformed
 
     private void processActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processActionPerformed
+        // Make sure we have a project path
+        if (projectPathField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Project path should not be blank.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Update the batch path in case it changed
+        batchFile = Paths.get(fileLocation.getText());
+        fileLocation.setText(batchFile.toString());
+
         // Put our keys and values into a HashMap
         String [] keys = keyArea.getText().split("\n");
         String [] values = valueArea.getText().split("\n");
