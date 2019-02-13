@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Adobe Media Encoder Batch Editor"/>
@@ -34,7 +38,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,34 +64,52 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="DetectFile" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="186" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="188" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="nested" min="-2" pref="86" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="nested1" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="L_nested2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="nested2" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="L_files" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="files" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="L_key" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                          <Component id="L_value" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="useArray" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="L_projectPath" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="projectPathField" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ext" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="L_key" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                                  <Component id="L_value" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="useHash" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="populateNested" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="nestPrefix" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jButton1" pref="228" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="files" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="nest1" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="nest2" min="-2" pref="40" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -105,29 +127,43 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="fileLocation" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="L_value" min="-2" max="-2" attributes="0"/>
-                      <Component id="L_key" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" pref="317" max="32767" attributes="0"/>
-                      <Component id="jScrollPane2" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="L_key" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="L_value" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="nested1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="nested2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="L_nested2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="L_files" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="files" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="nested" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane2" pref="248" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="populateNested" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nest1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nest2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nestPrefix" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ext" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="L_projectPath" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="projectPathField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="useArray" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="useHash" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="process" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -153,12 +189,13 @@
         </Component>
         <Component class="javax.swing.JLabel" name="L_key">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sequence Names:"/>
+            <Property name="text" type="java.lang.String" value="Existing Entries:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="L_value">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Matching File Names:"/>
+            <Property name="text" type="java.lang.String" value="Rename to:"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -197,34 +234,12 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="nested1">
-        </Component>
-        <Component class="javax.swing.JLabel" name="L_nested2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="to"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="nested2">
-        </Component>
-        <Component class="javax.swing.JLabel" name="L_files">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Read File Names From:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="files">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Browse"/>
+            <Property name="text" type="java.lang.String" value="Populate From BMP Files in Folder"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filesActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="nested">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nested:"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nestedActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="process">
@@ -237,10 +252,60 @@
         </Component>
         <Component class="javax.swing.JLabel" name="L_projectPath">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Project Path:"/>
+            <Property name="text" type="java.lang.String" value="Export Destination Path:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="projectPathField">
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Read From batch.xml"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Extension on Destination File Names:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="ext">
+        </Component>
+        <Component class="javax.swing.JButton" name="populateNested">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Populate Left:"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="populateNestedActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="nest1">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="to"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="nest2">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="useHash">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Left items are unique and all instances in batch file are mapped regardless of order (hash)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="useArray">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Left items can be duplicates and are mapped in order (array)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="nestPrefix">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=".prproj - Nested Sequence"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

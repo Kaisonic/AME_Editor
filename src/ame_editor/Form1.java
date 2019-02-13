@@ -13,8 +13,8 @@ import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ListIterator;
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,9 +28,11 @@ public class Form1 extends javax.swing.JFrame {
      */
     public Form1() {
         initComponents();
+        useHash.setSelected(true);
+        buttonGroup1.add(useHash);
+        buttonGroup1.add(useArray);
     }
     
-    private Path projectPath = Paths.get(System.getProperty("user.dir"));
     private Path batchFile = null;
 
     /**
@@ -42,6 +44,7 @@ public class Form1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         fileLocation = new javax.swing.JTextField();
         L_fileLocation = new javax.swing.JLabel();
@@ -52,15 +55,21 @@ public class Form1 extends javax.swing.JFrame {
         keyArea = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         valueArea = new javax.swing.JTextArea();
-        nested1 = new javax.swing.JTextField();
-        L_nested2 = new javax.swing.JLabel();
-        nested2 = new javax.swing.JTextField();
-        L_files = new javax.swing.JLabel();
         files = new javax.swing.JButton();
-        nested = new javax.swing.JButton();
         process = new javax.swing.JButton();
         L_projectPath = new javax.swing.JLabel();
         projectPathField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        ext = new javax.swing.JTextField();
+        populateNested = new javax.swing.JButton();
+        nest1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        nest2 = new javax.swing.JTextField();
+        useHash = new javax.swing.JRadioButton();
+        useArray = new javax.swing.JRadioButton();
+        nestPrefix = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Adobe Media Encoder Batch Editor");
@@ -77,9 +86,10 @@ public class Form1 extends javax.swing.JFrame {
             }
         });
 
-        L_key.setText("Sequence Names:");
+        L_key.setText("Existing Entries:");
 
-        L_value.setText("Matching File Names:");
+        L_value.setText("Rename to:");
+        L_value.setToolTipText("");
 
         keyArea.setColumns(10);
         keyArea.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -91,21 +101,10 @@ public class Form1 extends javax.swing.JFrame {
         valueArea.setRows(5);
         jScrollPane2.setViewportView(valueArea);
 
-        L_nested2.setText("to");
-
-        L_files.setText("Read File Names From:");
-
-        files.setText("Browse");
+        files.setText("Populate From BMP Files in Folder");
         files.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filesActionPerformed(evt);
-            }
-        });
-
-        nested.setText("Nested:");
-        nested.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nestedActionPerformed(evt);
             }
         });
 
@@ -116,7 +115,32 @@ public class Form1 extends javax.swing.JFrame {
             }
         });
 
-        L_projectPath.setText("Project Path:");
+        L_projectPath.setText("Export Destination Path:");
+
+        jButton1.setText("Read From batch.xml");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Extension on Destination File Names:");
+
+        populateNested.setText("Populate Left:");
+        populateNested.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                populateNestedActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("to");
+        jLabel2.setToolTipText("");
+
+        useHash.setText("Left items are unique and all instances in batch file are mapped regardless of order (hash)");
+
+        useArray.setText("Left items can be duplicates and are mapped in order (array)");
+
+        jLabel3.setText(".prproj - Nested Sequence");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,31 +155,43 @@ public class Form1 extends javax.swing.JFrame {
                         .addComponent(L_fileLocation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(DetectFile))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(nested, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nested1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(L_nested2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nested2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
-                        .addComponent(L_files)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(files, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(L_key)
-                        .addGap(106, 106, 106)
-                        .addComponent(L_value)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(useArray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(L_projectPath)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(projectPathField)))
+                        .addComponent(projectPathField))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ext))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(L_key)
+                                .addGap(157, 157, 157)
+                                .addComponent(L_value))
+                            .addComponent(useHash))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(populateNested)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nestPrefix))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(files, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nest1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nest2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -168,25 +204,37 @@ public class Form1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fileLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(L_value)
-                    .addComponent(L_key))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(L_key)
+                    .addComponent(L_value))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nested1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nested2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(L_nested2)
-                    .addComponent(L_files)
-                    .addComponent(files)
-                    .addComponent(nested))
+                    .addComponent(jButton1)
+                    .addComponent(files))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(populateNested)
+                    .addComponent(nest1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(nest2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nestPrefix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(ext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(L_projectPath)
                     .addComponent(projectPathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(useArray)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(useHash)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(process, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -202,7 +250,7 @@ public class Form1 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,42 +261,51 @@ public class Form1 extends javax.swing.JFrame {
         fileLocation.setText(batchFile.toString());
     }//GEN-LAST:event_DetectFileActionPerformed
 
-    private void nestedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nestedActionPerformed
+    private void populateNestedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_populateNestedActionPerformed
         int start;
         int end;
         try {
-            start = Integer.parseInt(nested1.getText());
-            end = Integer.parseInt(nested2.getText());
+            start = Integer.parseInt(nest1.getText());
+            end = Integer.parseInt(nest2.getText());
         } catch (NumberFormatException e) {
             return;
         }
         if (end < start)
             return;
-        keyArea.setText(null);
+        keyArea.setText("");
         for (int i = start; i <= end; i++) {
-            keyArea.append(String.format("Nested Sequence %02d", i) + "\n");
+            keyArea.append(nestPrefix.getText() + String.format(".prproj - Nested Sequence %02d", i) + "\n");
         }
-    }//GEN-LAST:event_nestedActionPerformed
+    }//GEN-LAST:event_populateNestedActionPerformed
 
     private void filesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filesActionPerformed
-        JFileChooser folder = new JFileChooser(projectPath.toFile());
+        JFileChooser folder = new JFileChooser();
         folder.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         if (folder.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
         {
-            valueArea.setText(null);
-            projectPath = folder.getSelectedFile().toPath();
+            valueArea.setText("");
+            Path projectPath = folder.getSelectedFile().toPath();
             projectPathField.setText(projectPath.toString());
-            for (String file : projectPath.toFile().list()) {
-                if (file.substring(file.length() - 4).equals(".bmp"))
-                    valueArea.append(file.substring(0, file.length() - 4) + "\n");
+            try {
+                for (String file : projectPath.toFile().list()) {
+                    if (file.length() > 4 && file.substring(file.length() - 4).equals(".bmp"))
+                        valueArea.append(file.substring(0, file.length() - 4) + "\n");
+                }
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(this, "Failed to read file from export path: \n\n" + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_filesActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        keyArea.setText("");
+        getCurrentBatchFileNames();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void processActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processActionPerformed
         // Make sure we have a project path
         if (projectPathField.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Project path should not be blank.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Export path should not be blank.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -256,7 +313,7 @@ public class Form1 extends javax.swing.JFrame {
         batchFile = Paths.get(fileLocation.getText());
         fileLocation.setText(batchFile.toString());
 
-        // Put our keys and values into a HashMap
+        // Put our keys and values into arrays and a hash map
         String [] keys = keyArea.getText().split("\n");
         String [] values = valueArea.getText().split("\n");
         if (keys.length != values.length) {
@@ -265,11 +322,11 @@ public class Form1 extends javax.swing.JFrame {
         }
         HashMap<String, String> map = new HashMap();
         for (int i = 0; i < keys.length; i++)
-            map.put(keys[i], values[i]);
-        
+        map.put(keys[i], values[i]);
+
         // Set up the output ArrayList
         ArrayList<String> newBatch = new ArrayList();
-        
+
         // Create an iterator to go through the batch file
         ListIterator<String> batch;
         try {
@@ -278,53 +335,98 @@ public class Form1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Failed to read batch.xml file.\n\n" + e, "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         // Loop through each line until we hit a file
+        int i = 0;
         while (batch.hasNext()) {
             String line = batch.next();
             if (line.startsWith("\t\t<SourceInfo>")) {
-                
+
                 // Found file, split this line to get sequence name
-                String [] split = line.split("\", \"");
+                String[] split = line.split("\", \"");
                 String sequence = split[2].substring(8);
-                
-                // Check if we have a mapped value for it
-                if (map.containsKey(sequence)) {
-                    
-                    // We have our key name, keep going until we hit the line to replace
-                    newBatch.add(line);
-                    while (batch.hasNext()) {
-                        String line2 = batch.next();
-                        if (line2.startsWith("\t\t<OutputBaseName>")) {
-                            
-                            // Write our two replacement lines, then break out
-                            newBatch.add("\t\t<OutputBaseName>" + projectPath.toString()+ System.getProperty("file.separator") + map.get(sequence) + "</OutputBaseName>");
-                            newBatch.add("\t\t<OutputFileName>" + projectPath.toString() + System.getProperty("file.separator") + map.get(sequence) + ".mp4</OutputFileName>");
-                            batch.next();
-                            break;
-                        } else {
-                            newBatch.add(line2);
+                String[] projectSplit = split[3].split("\\\\\\\\");
+                    sequence = projectSplit[3] + " - " + sequence;
+
+                    // Check if we have a mapped value for it
+                    // or
+                    // Check if the key we're on matches the sequence name
+                    if ((useHash.isSelected() && map.containsKey(sequence))
+                        ||
+                        (useArray.isSelected() && keys[i].equals(sequence))) {
+
+                        // We have our key name, keep going until we hit the line to replace
+                        newBatch.add(line);
+                        while (batch.hasNext()) {
+                            String line2 = batch.next();
+                            if (line2.startsWith("\t\t<OutputBaseName>")) {
+
+                                // Write our two replacement lines, then break out
+                                String name = "";
+                                if (useHash.isSelected())
+                                {
+                                    name = map.get(sequence);
+                                }
+                                if (useArray.isSelected())
+                                {
+                                    name = values[i];
+                                }
+                                newBatch.add("\t\t<OutputBaseName>" + projectPathField.getText() + System.getProperty("file.separator") + name + "</OutputBaseName>");
+                                newBatch.add("\t\t<OutputFileName>" + projectPathField.getText() + System.getProperty("file.separator") + name + "." + ext.getText() + "</OutputFileName>");
+                                batch.next();
+                                break;
+                            } else {
+                                newBatch.add(line2);
+                            }
                         }
+                        i++;
+                    } else {
+                        newBatch.add(line);
                     }
                 } else {
                     newBatch.add(line);
                 }
-            } else {
-                newBatch.add(line);
             }
-        }
-        
-        // Our new file is done, back up batch and write new one
-        try {
-            Files.copy(batchFile, Paths.get(batchFile.getParent().toString(), "batch_old.xml"), StandardCopyOption.REPLACE_EXISTING);
-            Files.delete(batchFile);
-            Files.write(batchFile, newBatch, Charset.forName("UTF-8"));
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Failed to back up batch.xml and write new one.\n\n" + e, "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Process completed successfully.");
+
+            // Our new file is done, back up batch and write new one
+            try {
+                Files.copy(batchFile, Paths.get(batchFile.getParent().toString(), "batch_old.xml"), StandardCopyOption.REPLACE_EXISTING);
+                Files.delete(batchFile);
+                Files.write(batchFile, newBatch, Charset.forName("UTF-8"));
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Failed to back up batch.xml and write new one.\n\n" + e, "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "Process completed successfully.");
     }//GEN-LAST:event_processActionPerformed
+
+    private void getCurrentBatchFileNames()
+    {
+        try {
+            // Create an iterator to go through the batch file
+            ListIterator<String> batch;
+            batch = Files.readAllLines(batchFile, Charset.forName("UTF-8")).listIterator();
+
+            // Loop through each line until we hit a file
+            while (batch.hasNext()) {
+                String line = batch.next();
+                if (line.startsWith("\t\t<SourceInfo>")) {
+                    // Found file, split this line to get sequence name
+                    String[] split = line.split("\", \"");
+                    String sequence = split[2].substring(8);
+                    String[] projectSplit = split[3].split("\\\\\\\\");
+                    // Also put the sequence name in the value area
+                    valueArea.append(sequence + "\n");
+                    sequence = projectSplit[3] + " - " + sequence;
+
+                    // Add the sequence name to our map
+                    keyArea.append(sequence + "\n");
+                }
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Failed to read batch.xml file.\n\n" + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -348,22 +450,29 @@ public class Form1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DetectFile;
     private javax.swing.JLabel L_fileLocation;
-    private javax.swing.JLabel L_files;
     private javax.swing.JLabel L_key;
-    private javax.swing.JLabel L_nested2;
     private javax.swing.JLabel L_projectPath;
     private javax.swing.JLabel L_value;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField ext;
     private javax.swing.JTextField fileLocation;
     private javax.swing.JButton files;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea keyArea;
-    private javax.swing.JButton nested;
-    private javax.swing.JTextField nested1;
-    private javax.swing.JTextField nested2;
+    private javax.swing.JTextField nest1;
+    private javax.swing.JTextField nest2;
+    private javax.swing.JTextField nestPrefix;
+    private javax.swing.JButton populateNested;
     private javax.swing.JButton process;
     private javax.swing.JTextField projectPathField;
+    private javax.swing.JRadioButton useArray;
+    private javax.swing.JRadioButton useHash;
     private javax.swing.JTextArea valueArea;
     // End of variables declaration//GEN-END:variables
 }
